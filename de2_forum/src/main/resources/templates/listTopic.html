@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>listTopic</title>
+</head>
+<body>
+	chào
+	<p th:text="${session.userLogin.username}">
+		<a href="/logOut"> thoát</a> <br /> listTopic
+	<form action="newTopic" method="post">
+		<input type="submit" value="gởi bài mới">
+
+	</form>
+	<br /> diễn đàn: chuyện học phí và hỗ trợ học tập
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th>chủ đề</th>
+				<th>hồi âm</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="topic : ${topics}">
+				<td><a th:text="${topic.title}"
+					th:href="@{/showTopic(id=${topic.id})}"></a>
+					<div th:if="${not topic.messages.empty}">
+						bài mới nhất bởi <a th:text="${topic.newMessage.creator.username}">
+						</a>,
+						<p
+							th:text="${#dates.format(topic.newMessage.createdTime.getTime(), 'MM/dd/yyyy a hh:mm ')}"></p>
+					</div></td>
+				<td th:text="${topic.messages.size()}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>reply</title>
+</head>
+<body>
+	<form th:action="@{/replyTopic(id=${id})}" method="post" th:object="${message}">
+	tiêu đề: 
+	<input th:field="*{title}">
+	nội dung<input th:field="*{content}">
+	<input type="submit" value="gởi">
+	</form>
+	<form action="listTopic" method="get">
+		<input type="submit" value="hủy bỏ">
+	</form>
+</body>
+</html>

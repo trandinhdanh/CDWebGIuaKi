@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>show topic</title>
+</head>
+<body>
+chào
+	<p th:text="${session.userLogin.username}">
+		<a href="/logOut"> thoát</a> <br />
+	<h1>chủ đề: </h1> <h1 th:text="${topic.title}"></h1>
+	
+	bài mới nhất bởi<div th:if="${not topic.messages.empty}">
+	<p
+							th:text="${#dates.format(topic.newMessage.createdTime.getTime(), 'MM/dd/yyyy a hh:mm ')}"></p>,
+							do  <a th:text="${topic.newMessage.creator.username}">
+						</a> </div> gửi. hồi âm <p th:text="${topic.messages.size()}"></p>
+						
+							
+						<p  th:text="${topic.creator.username}"></p>
+		tham gia: <p  th:text="${#dates.format(topic.creator.joinDate, 'MM/dd/yyyy a hh:mm ')}"></p>
+		
+					<a th:text="${topic.title}"></a>
+					<p th:text="${topic.content}"></p>
+	<a 
+					th:href="@{/reply}">trả lời</a>
+	<div th:each="message: ${topic.messages}">
+		<p th:text="${#dates.format(message.createdTime.getTime(), 'MM/dd/yyyy a hh:mm ')}"></p>
+		<p  th:text="${message.creator.username}"></p>
+		tham gia: <p  th:text="${#dates.format(message.creator.joinDate, 'MM/dd/yyyy a hh:mm ')}"></p>
+		
+		<p  th:text="${message.title}"></p>
+		<p  th:text="${message.content}"></p>
+		<a 
+					th:href="@{/reply}">trả lời</a>
+	</div>
+	<a 
+					th:href="@{/listTopic}">danh sách chủ đề</a>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login forum</title>
+</head>
+<body>
+	<form action="/login" method="post" th:object="${user}">
+		username: <input th:field="${user.username}">
+		password: <input th:field="${user.password}">
+		<input type="submit" th:text="submit">
+	
+	</form>
+</body>
+</html>

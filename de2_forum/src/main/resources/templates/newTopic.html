@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>new topic</title>
+</head>
+<body>
+	<form action="newTopic" method="post" th:object="${topic}">
+	tiêu đề: 
+	<input th:field="*{title}">
+	nội dung<input th:field="*{content}">
+	<input type="submit" value="gởi">
+	</form>
+	<form action="listTopic" method="get">
+		<input type="submit" value="hủy bỏ">
+	</form>
+</body>
+</html>
