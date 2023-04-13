@@ -42,7 +42,7 @@ public class EmployeeController {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         return "themnhanvien";
-    }
+    } 
 
     @PostMapping("/them-moi")
     public String newEmployee(@ModelAttribute("employee") Employee employee, @RequestParam("birthday") String dateString) {
